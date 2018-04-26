@@ -6,6 +6,3 @@ def parse_dependencies(data, kind):
     if key not in data:
         return []
     return [Dependency(i, kind) for i in data[key].keys()]
-
-def parse_author(data):
-    return data.get('author', 'Unknown')

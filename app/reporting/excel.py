@@ -33,7 +33,9 @@ class ExcelReport(Report):
             None if version.licenses else self.__empty_licenses_format))
         self.__worksheet.write_string(self.__row, 6, self.__formatted_references(dependency.runtime_references))
         self.__worksheet.write_string(self.__row, 7, self.__formatted_references(dependency.development_references))
-        self.__worksheet.write_string(self.__row, 8, manifest.author)
+        if not isinstance(version.author, str):
+            import pdb; pdb.set_trace()
+        self.__worksheet.write_string(self.__row, 8, version.author)
         self.__row += 1
 
     def __write_headers(self):

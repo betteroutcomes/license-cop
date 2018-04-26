@@ -58,13 +58,33 @@ class NodejsPackageRegistry(PackageRegistry):
     def __normalize_scoped_package_name(self, name):
         return name.replace('/', '%2F')
 
+    def __determine_author(self, data):
+        if 'author' in data:
+            if 'name' in data['author']:
+                return data['author']['name']
+            if 'email' in data['author']:
+                return data['author']['email']
+            if data['author'] and isinstance(data['author'], str) and data['author'] != '':
+                return data['author']
+        if 'maintainers' in data:
+            maintainer_list = [maintainer.get('name', maintainer.get('email', 'Unknown')) for maintainer in data['maintainers']]
+            maintainer_string = ", ".join(maintainer_list)
+            return maintainer_string
+        return 'Unknown'
+
     def __build_version(self, data):
+
+        foo = self.__determine_author(data)
+        if not isinstance(foo, str):
+            import pdb; pdb.set_trace()
+
         return PackageVersion(
             name=data['name'],
             number=data['version'],
             licenses=self.__determine_licenses(data),
             runtime_dependencies=parse_dependencies(data, DependencyKind.RUNTIME),
-            development_dependencies= []#parse_dependencies(data, DependencyKind.DEVELOPMENT),
+            development_dependencies= [],#parse_dependencies(data, DependencyKind.DEVELOPMENT),
+            author = self.__determine_author(data)
         )
 
     def __determine_licenses(self, data):

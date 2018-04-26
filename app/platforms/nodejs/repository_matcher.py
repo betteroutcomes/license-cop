@@ -3,7 +3,7 @@ import json
 from app.dependency import *
 from app.repository_matcher import *
 from app.manifest import *
-from app.platforms.nodejs.shared import parse_dependencies, parse_author
+from app.platforms.nodejs.shared import parse_dependencies
 
 
 class NodejsRepositoryMatcher(RepositoryMatcher):
@@ -21,6 +21,5 @@ class NodejsRepositoryMatcher(RepositoryMatcher):
             repository=repository,
             paths=match.paths,
             runtime_dependencies=parse_dependencies(data, DependencyKind.RUNTIME),
-            development_dependencies= [],#parse_dependencies(data, DependencyKind.DEVELOPMENT)
-            author=parse_author(data)
+            development_dependencies= []#parse_dependencies(data, DependencyKind.DEVELOPMENT)
         )
