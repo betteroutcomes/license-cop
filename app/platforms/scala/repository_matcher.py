@@ -98,7 +98,7 @@ class ScalaRepositoryMatcher(RepositoryMatcher):
             repository=repository,
             paths=match.paths,
             runtime_dependencies=[i for i in dependencies if i.is_runtime],
-            development_dependencies=[i for i in dependencies if i.is_development]
+            development_dependencies= []#[i for i in dependencies if i.is_development]
         )
 
     def __paths_from_project_folder(self, build_sbt):

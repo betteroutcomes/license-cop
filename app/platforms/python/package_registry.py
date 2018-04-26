@@ -62,6 +62,8 @@ class PythonPackageRegistry(PackageRegistry):
 
     def __extract_dependencies(self, data):
         requires_dist = data['requires_dist'] if 'requires_dist' in data else []
+        if requires_dist is None:
+            requires_dist = []
         return [parse_dependency(i) for i in requires_dist]
 
     def __filter_dependencies(self, dependencies, kind):

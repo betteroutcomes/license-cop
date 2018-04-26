@@ -21,5 +21,5 @@ class NodejsRepositoryMatcher(RepositoryMatcher):
             repository=repository,
             paths=match.paths,
             runtime_dependencies=parse_dependencies(data, DependencyKind.RUNTIME),
-            development_dependencies=parse_dependencies(data, DependencyKind.DEVELOPMENT)
+            development_dependencies= []#parse_dependencies(data, DependencyKind.DEVELOPMENT)
         )
