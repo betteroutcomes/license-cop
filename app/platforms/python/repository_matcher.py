@@ -88,7 +88,7 @@ class PythonRepositoryMatcher(RepositoryMatcher):
             repository=repository,
             paths=match.paths,
             runtime_dependencies=runtime,
-            development_dependencies=development
+            development_dependencies=[] #development
         )
 
     def __collect_dependencies(self, node, data, runtime, development):

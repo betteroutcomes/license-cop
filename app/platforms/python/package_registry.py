@@ -69,6 +69,19 @@ class PythonPackageRegistry(PackageRegistry):
     def __filter_dependencies(self, dependencies, kind):
         return [i for i in dependencies if i.kind == kind]
 
+    def __determine_author(self, data):
+        info = data['info']
+        if 'author' in info:
+            if isinstance(info['author'], str) and info['author'] != '':
+                return info['author']
+        if 'maintainer' in info:
+            if isinstance(info['maintainer'], str) and info['maintainer'] != '':
+                import pdb; pdb.set_trace()
+            else:
+                return 'Unknown'
+
+        return 'Unknown'
+
     def __build_package(self, data):
         info = data['info']
         deps = self.__extract_dependencies(info)
@@ -77,7 +90,8 @@ class PythonPackageRegistry(PackageRegistry):
             number=info['version'],
             licenses=self.__determine_licenses(info),
             runtime_dependencies=self.__filter_dependencies(deps, DependencyKind.RUNTIME),
-            development_dependencies=self.__filter_dependencies(deps, DependencyKind.DEVELOPMENT)
+            development_dependencies=self.__filter_dependencies(deps, DependencyKind.DEVELOPMENT),
+            author = self.__determine_author(data)
         )
 
     def __determine_licenses(self, data):
