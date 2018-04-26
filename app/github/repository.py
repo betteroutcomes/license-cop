@@ -48,7 +48,13 @@ class GithubRepository(GithubClient):
         response = self._session.get(self.__contents_uri(path))
         response.raise_for_status()
         data = response.json()
-        if isinstance(data, list) or data['type'] != 'file':
+        if isinstance(data, list):
+            #Kind of hacky, fixes the curation app case where there is a requirements folder.
+            #Could be done more explicitly in the future (i.e. not in read_text_file)
+            path_list = [element['path'] for element in data]
+            file_contents = [self.read_text_file(element_path) for element_path in path_list]
+            return '\n'.join(file_contents)
+        if data['type'] != 'file':
             raise ValueError(f'Path "{path}" is not a file.')
         return self.__decode_text_from_base64(data['content'])
 

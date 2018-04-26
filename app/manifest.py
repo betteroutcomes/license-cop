@@ -19,13 +19,14 @@ class ManifestVersion(PackageVersion):
 
 class Manifest(DataObject):
 
-    def __init__(self, platform, repository, paths, runtime_dependencies, development_dependencies):
+    def __init__(self, platform, repository, paths, runtime_dependencies, development_dependencies, author = 'Unknown'):
         self.platform = platform
         self.repository = repository
         self.paths = paths
         self.runtime_dependencies = runtime_dependencies
         self.development_dependencies = development_dependencies
         self.version = ManifestVersion(self)
+        self.author = author
 
     @property
     def formatted_paths(self):
