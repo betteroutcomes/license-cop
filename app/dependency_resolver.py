@@ -51,6 +51,7 @@ class DependencyResolver:
         return DependencyResolution(version, dependency.kind)
 
     def __fetch_version(self, dependency):
+        #import pdb; pdb.set_trace()
         if dependency.number is not None:
             return self.__registry.fetch_version(dependency.name, dependency.number)
         else:

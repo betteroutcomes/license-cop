@@ -74,10 +74,6 @@ class NodejsPackageRegistry(PackageRegistry):
 
     def __build_version(self, data):
 
-        foo = self.__determine_author(data)
-        if not isinstance(foo, str):
-            import pdb; pdb.set_trace()
-
         return PackageVersion(
             name=data['name'],
             number=data['version'],

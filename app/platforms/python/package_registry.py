@@ -18,6 +18,7 @@ DEPENDENCY_REGEX = re.compile(
     r')?)?'
 )
 
+
 DEVELOPMENT_DEPENDENCY_KEYWORDS = (
     'test',
     'tests',
@@ -39,12 +40,21 @@ def __dependency_kind(extra):
 
 
 def parse_dependency(string):
-    m = DEPENDENCY_REGEX.match(string)
-    if m:
-        return Dependency(
-            name=m.group('name'),
-            kind=__dependency_kind(m.group('extra'))
-        )
+    stripped = string.strip()
+    commented = stripped.startswith('#')
+    if !commented:
+        if ('version' in m.groupdict):
+            return Dependency(
+                name=m.group('name'),
+                kind=DependencyKind.RUNTIME,
+                version=m.group('version')
+            )
+        else:
+            return Dependency(
+                name=m.group('name'),
+                kind=DependencyKind.RUNTIME
+            )
+
     raise Exception(f'Could not parse dependency: {string}')
 
 
@@ -76,7 +86,7 @@ class PythonPackageRegistry(PackageRegistry):
                 return info['author']
         if 'maintainer' in info:
             if isinstance(info['maintainer'], str) and info['maintainer'] != '':
-                import pdb; pdb.set_trace()
+                pass
             else:
                 return 'Unknown'
 

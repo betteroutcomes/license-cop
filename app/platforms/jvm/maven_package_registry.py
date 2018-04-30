@@ -28,6 +28,14 @@ class MavenPackageRegistry(PackageRegistry):
 
     def _fetch_version(self, name, number):
         pom = self.get_pom(name, number)
+
+        #Careful, name is not a string. It's a JvmPackageName.
+
+        if (pom.group_id != ''):
+            author = pom.group_id
+        else:
+            author = pom.parent.group_id
+
         return PackageVersion(
             name=name,
             number=number,
@@ -35,9 +43,8 @@ class MavenPackageRegistry(PackageRegistry):
             runtime_dependencies=[
                 i.to_dependency(pom) for i in pom.filter_dependencies(DependencyKind.RUNTIME)
             ],
-            development_dependencies=[
-                i.to_dependency(pom) for i in pom.filter_dependencies(DependencyKind.DEVELOPMENT)
-            ]
+            development_dependencies= [],#[i.to_dependency(pom) for i in pom.filter_dependencies(DependencyKind.DEVELOPMENT)]
+            author = author
         )
 
     def _fetch_latest_version(self, name):

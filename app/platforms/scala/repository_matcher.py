@@ -72,6 +72,7 @@ def parse_scala_dependency(line, scala_version=None):
     if m:
         name = JvmPackageName(m.group('group'), m.group('artifact'), scala_version)
         kind = __dependency_kind_from(m.group('configuration'))
+        import pdb; pdb.set_trace()
         return Dependency(name, kind)
 
 
