@@ -40,21 +40,12 @@ def __dependency_kind(extra):
 
 
 def parse_dependency(string):
-    stripped = string.strip()
-    commented = stripped.startswith('#')
-    if !commented:
-        if ('version' in m.groupdict):
-            return Dependency(
-                name=m.group('name'),
-                kind=DependencyKind.RUNTIME,
-                version=m.group('version')
-            )
-        else:
-            return Dependency(
-                name=m.group('name'),
-                kind=DependencyKind.RUNTIME
-            )
-
+    m = DEPENDENCY_REGEX.match(string)
+    if m:
+        return Dependency(
+            name=m.group('name'),
+            kind=__dependency_kind(m.group('extra'))
+        )
     raise Exception(f'Could not parse dependency: {string}')
 
 
@@ -100,17 +91,24 @@ class PythonPackageRegistry(PackageRegistry):
             number=info['version'],
             licenses=self.__determine_licenses(info),
             runtime_dependencies=self.__filter_dependencies(deps, DependencyKind.RUNTIME),
-            development_dependencies=self.__filter_dependencies(deps, DependencyKind.DEVELOPMENT),
+            development_dependencies=[],#self.__filter_dependencies(deps, DependencyKind.DEVELOPMENT),
             author = self.__determine_author(data)
         )
+
+
 
     def __determine_licenses(self, data):
         license = self.__clean_license(data.get('license'))
         if license:
             return [license]
-        else:
-            urls = self.__extract_repository_urls(data)
-            return self._find_licenses_in_code_repository_urls(urls)
+        classifiers = data.get('classifiers', None)
+        if classifiers:
+            license_classifiers = [c for c in classifiers if "License" in c]
+            license_list = [lc.split('::')[-1].strip() for lc in license_classifiers]
+            return license_list
+
+        urls = self.__extract_repository_urls(data)
+        return self._find_licenses_in_code_repository_urls(urls)
 
     def __clean_license(self, string):
         if string:

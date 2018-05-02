@@ -36,6 +36,7 @@ PATTERNS = [
 ]
 
 REQUIREMENT_REGEX = re.compile(r'^\s*(\w[\w\-\.]+)\s*')
+VERSIONED_REQUIREMENT_REGEX = re.compile(r'^\s*(\w[\w\-\.]+)\s*==([a-zA-Z0-9.]+)')
 
 
 def parse_requirements_file(data, kind):
@@ -43,8 +44,14 @@ def parse_requirements_file(data, kind):
     for line in data.splitlines():
         m = REQUIREMENT_REGEX.match(line)
         if m:
-            name = m.group(1)
-            dependencies.append(Dependency(name, kind))
+            if "==" in line and VERSIONED_REQUIREMENT_REGEX.match(line):
+                m2 = VERSIONED_REQUIREMENT_REGEX.match(line)
+                name = m2.group(1)
+                version = m2.group(2)
+                dependencies.append(Dependency(name, kind, version))
+            else:
+                name = m.group(1)
+                dependencies.append(Dependency(name, kind))
     return dependencies
 
 
