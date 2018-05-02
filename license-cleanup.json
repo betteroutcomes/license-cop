@@ -1,7 +1,5 @@
 {
-  "remove_packages": {
-
-  },
+  "remove_packages": ["newman-reporter-script", "git"],
   "license_replacements": {
     "AGPLv3": "AGPL-3.0",
     "Apache License 2.0": "Apache-2.0",
@@ -33,6 +31,8 @@
     "Expat": "MIT",
     "Expat license": "MIT",
     "LGPLv2+": "LGPL-2.0-or-later",
+    "GNU Lesser General Public License v2 (LGPLv2)": "LGPL-2.0-only",
+    "LGPLv3": "LGPL-3.0-only",
     "MIT/X11": "MIT",
     "MIT/X": "MIT",
     "MIT license": "MIT",
@@ -52,13 +52,28 @@
     "http://creativecommons.org/publicdomain/zero/1.0/" : "CC0-1.0",
     "BSD or Apache License, Version 2.0": "BSD-3-Clause OR Apache-2.0",
     "BSD 3-Clause License or Apache License, Version 2.0": "BSD-3-Clause OR Apache-2.0",
-    "Apache-2.0|BSD-3-Clause" : "BSD-3-Clause OR Apache-2.0"
+    "Apache-2.0|BSD-3-Clause" : "BSD-3-Clause OR Apache-2.0",
+    "(GPL-2.0 OR MIT)": "GPL-2.0-only OR MIT"
+
   },
   "individual_updates" : {
+    "amqp": {
+      "versions": {
+        "1.4.9": {
+          "license": "LGPL-2.0-only"
+        }
+      }
+    },
     "idna": {
       "license": "Custom-idna"
     },
     "chardet": {
+      "license": "LGPL-2.1-or-later"
+    },
+    "cryptography": {
+      "license": "Custom-cryptography"
+    },
+    "crontab": {
       "license": "LGPL-2.1-or-later"
     },
     "docutils": {
@@ -73,8 +88,14 @@
     "entities": {
       "license": "Custom-entities"
     },
+    "ephem": {
+      "license": "Custom-ephem"
+    },
     "font-awesome" : {
       "license": "Custom-font-awesome"
+    },
+    "json-schema": {
+      "license": "Custom-json-schema"
     },
     "keyring": {
       "license": "MIT"
@@ -97,6 +118,12 @@
     "nose" : {
       "license": "LGPL-2.0-or-later"
     },
+    "objectpath": {
+      "license": "MIT"
+    },
+    "paramiko": {
+      "license": "LGPL-2.1-or-later"
+    },
     "pip-api": {
       "license": "No license"
     },
@@ -109,6 +136,9 @@
     "python-dateutil": {
       "license": "Custom-python-dateutil"
     },
+    "pycountry": {
+      "license": "LGPL-2.1-or-later"
+    },
     "pycurl": {
       "license": "Custom-PycURL"
     },
@@ -120,6 +150,12 @@
     },
     "tabulate" : {
       "license": "MIT"
+    },
+    "tqdm": {
+      "license": "Custom-tqdm"
+    },
+    "urwid": {
+      "license": "LGPL-2.1-or-later"
     },
     "win_inet_pton": {
       "license": "Custom-win_inet_pton"
@@ -138,20 +174,24 @@
     }
   },
   "license_urls": {
-    "Apache-2.0": "https://opensource.org/licenses/Apache-2.0",
-    "BSD-3-Clause": "https://opensource.org/licenses/BSD-3-Clause",
-    "BSD-2-Clause": "https://opensource.org/licenses/BSD-2-Clause",
+    "Apache-2.0": "https://spdx.org/licenses/Apache-2.0.html",
+    "BSD-3-Clause": "https://spdx.org/licenses/BSD-3-Clause.html",
+    "BSD-2-Clause": "https://spdx.org/licenses/BSD-2-Clause.html",
     "CC0-1.0": "https://creativecommons.org/publicdomain/zero/1.0/",
-    "ISC": "https://opensource.org/licenses/ISC",
-    "MIT": "https://opensource.org/licenses/MIT",
+    "ISC": "https://spdx.org/licenses/ISC.html",
+    "MIT": "https://spdx.org/licenses/MIT.html",
     "MPL-1.0":"https://spdx.org/licenses/MPL-1.0.html",
-    "MPL-2.0": "https://opensource.org/licenses/MPL-2.0",
+    "MPL-2.0": "https://spdx.org/licenses/MPL-2.0.html",
     "Python-2.0": "https://opensource.org/licenses/Python-2.0",
     "GPL-2.0-only": "https://spdx.org/licenses/LGPL-2.0-only.html",
     "LGPL-2.0-or-later": "https://spdx.org/licenses/LGPL-2.0-or-later.html",
     "LGPL-2.1-or-later": "https://spdx.org/licenses/LGPL-2.1-or-later.html",
+    "LGPL-3.0-only": "https://spdx.org/licenses/LGPL-3.0-only.html",
     "Unlicense": "http://unlicense.org/",
+    "WTFPL": "https://spdx.org/licenses/WTFPL.html",
     "ZPL-2.1": "https://spdx.org/licenses/ZPL-2.1.html",
+    "BSD-3-Clause OR Apache-2.0": "https://opensource.org/licenses/BSD-3-Clause OR https://opensource.org/licenses/Apache-2.0",
+    "GPL-2.0-only OR MIT": "https://spdx.org/licenses/GPL-2.0-only.html OR https://spdx.org/licenses/MIT.html",
     "Custom-entities": "https://github.com/fb55/entities/blob/master/LICENSE",
     "Custom-python-dateutil": "https://github.com/dateutil/dateutil/blob/master/LICENSE",
     "Custom-docutils": "https://github.com/docutils-mirror/docutils/blob/master/COPYING.txt",
@@ -164,6 +204,10 @@
     "Custom-PycURL": "https://github.com/pycurl/pycurl#license",
     "Custom-pyzmq": "https://github.com/zeromq/pyzmq",
     "Custom-Pillow": "https://github.com/python-pillow/Pillow/blob/master/LICENSE",
-    "Custom-pycryptodome": "https://www.pycryptodome.org/en/latest/src/license.html"
+    "Custom-pycryptodome": "https://www.pycryptodome.org/en/latest/src/license.html",
+    "Custom-cryptography": "https://github.com/pyca/cryptography/blob/master/LICENSE",
+    "Custom-json-schema": "https://github.com/kriszyp/json-schema/blob/master/README.md",
+    "Custom-tqdm": "https://github.com/tqdm/tqdm/blob/master/LICENCE",
+    "Custom-ephem": "https://github.com/brandon-rhodes/pyephem/blob/master/COPYING"
   }
 }

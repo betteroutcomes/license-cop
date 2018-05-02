@@ -29,7 +29,8 @@ DEVELOPMENT_DEPENDENCY_KEYWORDS = (
     'devel',
     'development',
     'debug',
-    'debugging'
+    'debugging',
+    'local'
 )
 
 
