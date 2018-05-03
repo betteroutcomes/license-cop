@@ -102,8 +102,8 @@ def main():
     print(f'• Checking {repr(github)}')
     print(f'• Report will be saved in "{filename}"')
     try:
-        #report = OM1ExcelReport(filename, max_depth=None)
-        report = ExcelReport(filename, max_depth=None)
+        report = OM1ExcelReport(filename, max_depth=None)
+        #report = ExcelReport(filename, max_depth=None)
         # report = PlainTextReport(filename)
         process_repositories(github, report)
     except KeyboardInterrupt:

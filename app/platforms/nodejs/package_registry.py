@@ -34,7 +34,13 @@ class NodejsPackageRegistry(PackageRegistry):
         return self.__build_version(version_data)
 
     def __fetch_version_data(self, name, number):
+        max_retries = 6
+        retries = 0
         response = self._session.get(VERSION_URI.format(name, number))
+        while response.status_code == 503 and retries < max_retries:
+            response = self._session.get(VERSION_URI.format(name, number))
+            retries += 1
+
         response.raise_for_status()
         return response.json()
 

@@ -25,10 +25,10 @@
     "New BSD License": "BSD-3-Clause",
     "new BSD": "BSD-3-Clause",
     "New BSD": "BSD-3-Clause",
-    "Simplified BSD": "BSD-3-Clause",
-    "BSD - See ndg/httpsclient/LICENCE file for details": "BSD-3-Clause",
     "newBSD": "BSD-3-Clause",
     "Modified BSD": "BSD-3-Clause",
+    "Simplified BSD": "BSD-3-Clause",
+    "BSD - See ndg/httpsclient/LICENCE file for details": "BSD-3-Clause",
     "FreeBSD License": "BSD-2-Clause",
     "Expat": "MIT",
     "Expat license": "MIT",
@@ -95,9 +95,6 @@
     },
     "font-awesome" : {
       "license": "Custom-font-awesome"
-    },
-    "imblearn": {
-      "license": "No license"
     },
     "json-schema": {
       "license": "Custom-json-schema"
@@ -196,13 +193,14 @@
     "Unlicense": "http://unlicense.org/",
     "WTFPL": "https://spdx.org/licenses/WTFPL.html",
     "ZPL-2.1": "https://spdx.org/licenses/ZPL-2.1.html",
-    "BSD-3-Clause OR Apache-2.0": "https://opensource.org/licenses/BSD-3-Clause OR https://opensource.org/licenses/Apache-2.0",
+    "BSD-3-Clause OR Apache-2.0": "https://spdx.org/licenses/BSD-3-Clause.html OR https://spdx.org/licenses/Apache-2.0.html",
     "GPL-2.0-only OR MIT": "https://spdx.org/licenses/GPL-2.0-only.html OR https://spdx.org/licenses/MIT.html",
+    "BSD-3-Clause OR MIT": "https://spdx.org/licenses/BSD-3-Clause.html OR https://spdx.org/licenses/Apache-2.0.html",
     "Custom-entities": "https://github.com/fb55/entities/blob/master/LICENSE",
     "Custom-python-dateutil": "https://github.com/dateutil/dateutil/blob/master/LICENSE",
     "Custom-docutils": "https://github.com/docutils-mirror/docutils/blob/master/COPYING.txt",
     "Custom-idna": "https://github.com/kjd/idna/blob/master/LICENSE.rst",
-    "Custon-SOAPpy":"https://github.com/kiorky/SOAPpy/blob/develop/LICENSE",
+    "Custom-SOAPpy":"https://github.com/kiorky/SOAPpy/blob/develop/LICENSE",
     "Custom-dnspython": "http://www.dnspython.org/LICENSE",
     "Custom-win_inet_pton": "https://github.com/hickeroar/win_inet_pton/blob/master/LICENSE",
     "Custom-psycopg2": "http://initd.org/psycopg/license/",
