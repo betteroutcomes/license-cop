@@ -4,6 +4,12 @@
 
 A nifty script that fetches the licenses for all your third-party libraries.
 
+The following instructions setup instructions still apply to the OM1 fork of the repo.
+See the section "OM1 License Cleanup" for specific instructions.
+
+Also, note that while this document claims that this project supports the SBT files,
+it really doesn't work that well. We only use it for Python and Node at the moment.  
+
 ![Dog cop meme](meme.jpg)
 
 ## Supported Platforms
@@ -81,6 +87,27 @@ $ pipenv install -d
 
 Once everything is set, run the `./license-cop` script. It will print
 its usage instructions.
+
+## OM1 License cleanup
+
+To run license-cop, you run the command
+
+```
+$ pipenv shell
+$ ./license_cop www.github.com/betteroutcomes <output-file-name>
+```
+
+Note that the output is a .xlsx file.
+
+I've added a script called `license_cleanup.py` which does some editing of this
+Excel file to insert the names of licenses that the tool failed to find so I've manually
+looked them up. This data is stored in `license_cleanup.json`.
+
+So once you've run the above script and have your Excel file, run the following:
+
+```
+$ python ./license_cleanup.py <input-file-name> <output-file-name>
+```
 
 ## Development
 
