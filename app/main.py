@@ -8,6 +8,7 @@ from app.github.repository import *
 from app.platform import *
 from app.reporting.excel import ExcelReport
 from app.reporting.plain_text import PlainTextReport
+from app.reporting.om1_excel import OM1ExcelReport
 
 
 def print_usage():
@@ -101,6 +102,7 @@ def main():
     print(f'• Checking {repr(github)}')
     print(f'• Report will be saved in "{filename}"')
     try:
+        #report = OM1ExcelReport(filename, max_depth=None)
         report = ExcelReport(filename, max_depth=None)
         # report = PlainTextReport(filename)
         process_repositories(github, report)

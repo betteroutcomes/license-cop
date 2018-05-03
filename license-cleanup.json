@@ -27,6 +27,8 @@
     "New BSD": "BSD-3-Clause",
     "Simplified BSD": "BSD-3-Clause",
     "BSD - See ndg/httpsclient/LICENCE file for details": "BSD-3-Clause",
+    "newBSD": "BSD-3-Clause",
+    "Modified BSD": "BSD-3-Clause",
     "FreeBSD License": "BSD-2-Clause",
     "Expat": "MIT",
     "Expat license": "MIT",
@@ -93,6 +95,9 @@
     },
     "font-awesome" : {
       "license": "Custom-font-awesome"
+    },
+    "imblearn": {
+      "license": "No license"
     },
     "json-schema": {
       "license": "Custom-json-schema"
@@ -183,7 +188,8 @@
     "MPL-1.0":"https://spdx.org/licenses/MPL-1.0.html",
     "MPL-2.0": "https://spdx.org/licenses/MPL-2.0.html",
     "Python-2.0": "https://opensource.org/licenses/Python-2.0",
-    "GPL-2.0-only": "https://spdx.org/licenses/LGPL-2.0-only.html",
+    "GPL-2.0-only": "https://spdx.org/licenses/GPL-2.0-only.html",
+    "LGPL-2.0-only": "https://spdx.org/licenses/LGPL-2.0-only.html",
     "LGPL-2.0-or-later": "https://spdx.org/licenses/LGPL-2.0-or-later.html",
     "LGPL-2.1-or-later": "https://spdx.org/licenses/LGPL-2.1-or-later.html",
     "LGPL-3.0-only": "https://spdx.org/licenses/LGPL-3.0-only.html",

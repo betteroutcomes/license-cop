@@ -66,6 +66,8 @@ class GithubRepository(GithubClient):
 
     def fetch_tree(self, sha='master'):
         response = self._session.get(self.__recursive_tree_uri(sha))
+        if response.status_code == 404:
+            response = self._session.get(self.__recursive_tree_uri('develop'))
         response.raise_for_status()
         data = response.json()
         return self.__build_tree(data)
