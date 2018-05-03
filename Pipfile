@@ -8,7 +8,9 @@ xmltodict = "*"
 pyparsing = "*"
 xlsxwriter = "*"
 "beautifulsoup4" = "*"
-
+pandas = "*"
+xlrd = "*"
+openpyxl = "*"
 
 
 
