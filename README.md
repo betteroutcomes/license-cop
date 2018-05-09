@@ -372,3 +372,21 @@ INSTANCE = Platform('Foobar', FoobarRepositoryMatcher(), FoobarPackageRegistry()
 Finally, just register this platform instance at the
 [app initialization file](app/__init__.py), following the structure already
 in place.
+
+### Generating `sbt` Ivy Report
+
+For Ratking or other `sbt` projects, this tool will not automatically find dependencies.
+In order to do so, you must generate an Ivy report using `sbt` itself.
+
+To do this, first enter the directory of the project and run the following:
+
+```bash
+sbt update
+```
+
+After running this, many different XML files should have appeared in the
+`/target/scala-x.yy/resolution-cache/reports` folder.
+
+These can be opened in a web browser through IntelliJ, which will display
+an Ivy report summarizing the project's dependencies.
+
